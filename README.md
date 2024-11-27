@@ -1,3 +1,6 @@
+# 不要喷，刚开始用的webpack，紧急改的这个，拿过来先用着。优化的事慢慢说。
+
+
 # Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
