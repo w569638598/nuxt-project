@@ -39,12 +39,14 @@
 </template>
 
 <script setup>
-// import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import resources from '~/assets/images/footer/resources.svg'
 import moreType from '~/assets/images/footer/moreType.svg'
 import interfaceIcon from '~/assets/images/footer/interface.svg'
 import engine from '~/assets/images/footer/engine.svg'
-
+onMounted(() => {
+  isMobile()
+})
 
 const serverAdvantage = [
   {

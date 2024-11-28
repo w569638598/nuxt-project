@@ -63,7 +63,7 @@
           直播/短视频</div>
         <div @click="openPage('openPlatform.html')" :class="[activeNav == 'openPlatform' ? 'active' : '']">
           开放平台</div> -->
-        <div :class="[activeNav == 'news' || activeNav == 'newDetail' ? 'active' : '']">
+        <div :class="[activeNav == 'news' || activeNav == 'newsDetail' ? 'active' : '']">
           <NuxtLink to="/news">
           资讯中心</NuxtLink></div>
         <div :class="[activeNav == 'about' ? 'active' : '']"><NuxtLink to="/about">关于我们</NuxtLink></div>
