@@ -6,11 +6,11 @@
             <div class="headerTitle"></div>
             <p class="timerBox flcc">
                 <span class="time flcc">
-                    <img style="margin-right: 3px;" src="../../staticResources/news/timeIcon.svg" alt=""> 
+                    <img style="margin-right: 3px;" src="~/assets/images/news/timeIcon.svg" alt=""> 
                     <span class="timeSpan"></span>
                 </span>
                     <span class="personal flcc">
-                        <img src="../../staticResources/news/personal.svg" alt=""> 
+                        <img src="~/assets/images/news/personal.svg" alt=""> 
                         <span class="author"></span>
                     </span>
             </p>

@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-
+import mobileBanner from '~/assets/images/about/mobileBanner.png'
+import pcBnner from '~/assets/images/about/pcBanner1.png'
   useSeoMeta({
           title: '影划算电影票 - 关于我们',
           meta: [
@@ -38,12 +39,7 @@ observer.observe($('#data'))
 
 // contentMainTitle
 const  isMobileP  = isMobile()
-if (isMobileP) {
-    $('.banner').innerHTML=`<img src='/staticResources/about/mobileBanner.png' />`
 
-}else{
-
-}
 
 
 // 动画
@@ -62,7 +58,7 @@ addCustomerService()
 <template>
    <!-- banner -->
    <div class="banner">
-        <img class="" style="width: 100%" src="~/assets/images/about/pcBanner1.png" alt="">
+        <img class="" ref="bannerRef" style="width: 100%" :src="isMobileP ? mobileBanner : pcBnner" alt="">
     </div>
     <!-- banner-end -->
     <!-- content -->
@@ -235,7 +231,7 @@ addCustomerService()
         .contentCenter {
             .desc {
                 .textBox {
-                    background: url('@assets/images/about/mobileBG.png');
+                    background: url('~/assets/images/about/mobileBG.png');
 
                     .title {
                         display: none;
@@ -289,7 +285,7 @@ addCustomerService()
             align-items: center;
 
             .item {
-                background: url('@assets/images/about/elbg.png') no-repeat bottom right, linear-gradient(180deg, #EBF3FF 0%, #F3F8FF 100%);
+                background: url('~/assets/images/about/elbg.png') no-repeat bottom right, linear-gradient(180deg, #EBF3FF 0%, #F3F8FF 100%);
                 background-size: 30%;
                 $iconw: 44px;
                 display: flex;
@@ -349,7 +345,7 @@ addCustomerService()
 }
 
 .contentMain {
-    background: url('@assets/images/about/contentBGIMg.png') right bottom no-repeat;
+    background: url('~/assets/images/about/contentBGIMg.png') right bottom no-repeat;
     padding-bottom: 46px;
 
     .data {

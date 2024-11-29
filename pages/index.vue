@@ -33,8 +33,8 @@
                   <h2>合作模式</h2>
                   <p class="desc">6大合作模式，满足您的各项功能需求</p>
               </div>
-              <div class="tabBox partner-tab" v-if="!isMobile">
-                  <div class="tabWrap">
+              <div class="tabBox partner-tab">
+                  <div class="tabWrap" :class="[isMobile ? 'mobileTabxBox' : '']">
                     <div class="item" :class="[modeTabIndex === i ? 'active' : '']" v-for="(item, i) of talList"
                             @mouseover="changeModeTab(i)">
                             <img :src="item.img" alt="">
@@ -67,7 +67,7 @@
           <div class="contentCenter">
               <div class="textWrap">
                   <div class="title">影划算电影票邀您携手，共赴蓝海市场</div>
-                  <button onclick="window.open('https://www.yhs.cn', '_blank')">立即体验</button>
+                  <button onclick="window.open('https://pub.yhs.cn', '_blank')">立即体验</button>
               </div>
               <img src="~/assets/images/index/experience.png" alt="">
           </div>
@@ -252,7 +252,288 @@ const stepBoxTextList = ['注册登录', '合作签约', '应用搭建', '上线
 </script>
 
 <style lang="scss" scoped>
-@import '~/assets/base.scss';
+.mobileTabxBox{
+    &>*{
+        margin-right: 12rem;
+        padding: 0 6rem;
+    }
+}
+.el-dropdown-link:focus {
+    outline: none;
+  }
+  
+  $boxShadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
+  
+  // .solutionActive {
+  //           .parentNav {
+  //             color: @blue;
+  //           }
+  //         }
+
+  .header {
+    height: 80px;
+    position: relative;
+    z-index: 9999999999999999999;
+  
+    .inner {
+      width: 1200px;
+  
+      .navList {
+  
+        .hasChild {
+          position: relative;
+  
+          &:hover {
+            .childNav {
+              height: auto;
+              padding: 12px;
+            }
+          }
+  
+          .parentNav {
+            &::after {
+              content: '';
+              position: absolute;
+              right: -20px;
+              margin-top: 2.5px;
+              width: 7px;
+              height: 7px;
+              border-style: solid;
+              border-width: 1px;
+              border-color: transparent transparent #ccc #ccc;
+              transform: rotate(-45deg);
+            }
+          }
+  
+          .navBox {
+            box-shadow: $boxShadow;
+            border: 1px solid #e4e7ed;
+            background: white;
+  
+          }
+  
+          .childNav {
+            position: absolute;
+            inset: 28px auto auto 50%;
+            transform: translate(-50%, 0);
+            transition: all .2s;
+            height: 0;
+            overflow: hidden;
+  
+            ul {
+              margin: 0;
+              padding: 6px 0;
+              z-index: 10;
+  
+              .active {
+                color: $blue;
+              }
+  
+              li {
+                list-style: none;
+                display: flex;
+                align-items: center;
+                white-space: nowrap;
+                list-style: none;
+                line-height: 22px;
+                padding: 12px 16px;
+                margin: 0;
+                cursor: pointer;
+                outline: 0;
+                color: $text-color-regular;
+  
+                .productItem {
+                  img {
+                    width: 40px;
+                    height: 40px;
+                    margin-right: 8px;
+                  }
+                  .textBox{
+                    .title{
+                      font-size: 16px;
+                      color: var(--fc-1d)
+                    }
+                    .desc{
+                      font-size: 12px;
+                      color: var(--fc-4e)
+                    }
+                    p{
+                      margin: 0;
+                    }
+                  }
+                }
+              }
+            }
+  
+            .arrow {
+              position: absolute;
+              top: 8px;
+              right: 50%;
+              width: 10px;
+              height: 10px;
+              // box-shadow: @boxShadow;
+              background: white;
+              z-index: 1;
+              display: block;
+              transform: rotate(45deg);
+            }
+  
+          }
+        }
+  
+        &>div {
+          font-size: $fourthLevel;
+          margin-right: 80px;
+          position: relative;
+          cursor: pointer;
+          border-bottom: 3px solid transparent;
+  
+          &:last-child {
+            margin-right: 0;
+          }
+  
+  
+  
+          &.active {
+            color: #2168ff;
+            border-bottom: 3px solid #2168ff;
+            padding-bottom: 6px;
+          }
+  
+          &.btn {
+            cursor: pointer;
+            font-size: $comLevel;
+            text-align: center;
+            width: 90px;
+            height: 36px;
+            line-height: 36px;
+            padding: 0;
+            border-radius: 2px;
+            color: #fff;
+            background-color: $btn-bg-blue;
+            display: inline-block;
+          }
+  
+          .line {
+            height: 3px;
+            width: 100%;
+            background-color: #2168ff;
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+          }
+        }
+      }
+  
+      img {
+        width: 200px;
+        height: 50px;
+      }
+    }
+  }
+@media(max-width: 1200px) {
+    .mobileMenuIcon {
+        display: block;
+      }
+    .banner {
+        width: 100% !important;
+        min-width: 100% !important;
+        background: #E2E8F0 !important;
+        padding-top: 26px;
+        .innerBox {
+            @include centerWrap;
+            overflow: hidden;
+            display: block;
+            .left{
+                text-align: center;
+                margin-right: 0 !important;
+                position: relative;
+                z-index: 2;
+                .title{
+                    font-size: 20px;
+                    line-height: 28px;
+                }
+                .desc{
+                    margin-top: 5rem;
+                }
+            }
+            img{
+                width: 80%;
+                margin: 0 auto;
+                display: block;
+                position: relative;
+                z-index: 1;
+                top: -80px;
+            }
+        }
+    }
+    .advantageBox{
+        padding-bottom: 0 !important;
+        &>.title{
+            font-size: $mobileTitleFs !important;
+            padding: $titlePadding !important;
+        }
+        .list {
+            flex-direction: column;
+            @include centerWrap;
+            .listItem {
+                width: 100% !important;
+                margin-bottom: 20px;
+                background-size: auto !important;
+                &:last-child{
+                    margin-bottom: 0!important;
+                }
+            }
+        }
+    }
+    .mode{
+        .tabBox{
+            display: block !important;
+            overflow: scroll;
+            .tabWrap{
+                width: 120%;
+                display: flex;
+                justify-content: space-between;
+                p{
+                    white-space: nowrap;  
+                }
+            }
+            img{
+                display: none;
+            }
+        }
+        .conBox{
+            flex-direction: column;
+            .item{
+                width: 100% !important;
+                margin-bottom: 17px;
+                
+            }
+        }
+    }
+    
+    .experience{
+        .contentCenter{
+            justify-content: space-between !important;
+            padding: 16rem !important;
+            img{
+                position: static !important;
+                width: 100rem !important;
+            }
+        }
+        .textWrap{
+            margin-right: 0 !important;
+            margin-top: 0!important;
+            .title{
+                font-size: 18px !important;
+                line-height: 160% !important;
+            }
+            button{
+                padding: 4rem 18rem !important;
+            }
+        }
+    }
+}
 
 // 体验
 .experience {

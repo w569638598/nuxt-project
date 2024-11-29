@@ -9,7 +9,7 @@
             <ul class="menuList" v-if="isOpenMenu">
                 <li @click="openPage(nav)" v-for="(nav, i) of navList"
                     :class="[nav.children ? 'hasChildren' : '', 'navItem', nav.isOpenChildren ? 'openedChildren' : 'closedChildren']">
-                    <div class="navItemBox" :class="['navItem', activeNav == nav.page ? 'active' : '']">
+                    <div class="navItemBox" :class="['navItem', isActiveNav(nav.page) ? 'active' : '']">
                         <span class="text">{{ nav.text }}</span>
                         <img class=" arrow" @click="nav.isOpenChildren = !nav.isOpenChildren"
                             v-if="nav.children && !nav.isOpenChildren" src="~/assets/images/header/arrow.svg" alt="">
@@ -19,7 +19,7 @@
                     </div>
                     <ul v-if="nav.children && nav.isOpenChildren">
                         <li @click="openPage(cNav)" v-for="(cNav, i) of nav.children">
-                            <div class="navItemBox" :class="['navItem', activeNav == cNav.page ? 'active' : '']">
+                            <div class="navItemBox" :class="['navItem', isActiveNav(cNav.page) ? 'active' : '']">
                                 <span class="text">{{ cNav.text }}</span>
                             </div>
                         </li>
@@ -31,12 +31,23 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const pathname = window.location.pathname
-
+import { ref, computed } from 'vue';
+const route = useRoute()
 const activeNav = ref('')
-activeNav.value = pathname.match(/\/(.*).html$/)?.[1] || 'home'
+activeNav.value = route.name
+watch(route, (n) => {
+  activeNav.value = route.name
+})
 
+const isActiveNav = computed(() => {
+    return (name) => {
+        if(typeof name === 'string'){
+            return name === activeNav.value
+        }else if(name instanceof Array){
+            return name.includes(activeNav.value)
+        }
+    }
+})
 
 const isOpenMenu = ref(false)
 const navList = ref([
@@ -53,22 +64,22 @@ const navList = ref([
         children: [
             {
                 text: 'SaaS系统',
-                path: 'saas.html',
+                path: 'saas',
                 page: 'saas'
             },
             {
                 text: '电影卡券',
-                path: 'movieCard.html',
+                path: 'movieCard',
                 page: 'movieCard'
             },
             {
                 text: '淘宝电商',
-                path: 'taobao.html',
+                path: 'taobao',
                 page: 'taobao'
             },
             {
                 text: 'API接口',
-                path: 'openPlatform.html',
+                path: 'openPlatform',
                 page: 'openPlatform'
             }
         ]
@@ -76,12 +87,12 @@ const navList = ref([
 
     {
         text: '资讯中心',
-        path: 'news.html',
-        page: 'news'
+        path: 'news',
+        page: ['news', 'newsDetail']
     },
     {
         text: '关于我们',
-        path: 'about.html',
+        path: 'about',
         page: 'about'
     }
 ])

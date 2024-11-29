@@ -100,8 +100,8 @@ const list = ref([])
             }
         }
         .listBox-item-img {
-            width: 106px;
-            height: 64px;
+            width: 106px !important;
+            height: 64px !important;
 
             img {
                 width: 100%;

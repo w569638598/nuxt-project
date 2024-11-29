@@ -9,9 +9,9 @@
                 <industryNews />
             </div>
         </div>
-        <div class="contentCenter" v-else>
-            <div id="newsTopM" title="新闻头条"><newsTop /></div>
-            <div id="listBoxM"><list /></div>
+        <div class="contentCenter" v-else style="display: block">
+            <div id="newsTopM"><tabsMobile /></div>
+            <div id="listBoxM" style="margin-top: 20px;"><list /></div>
         </div>
     </div>
 </template>
@@ -59,10 +59,10 @@ onMounted(() => {
             .title {
                 padding: 6px 0 6px 12px;
             }
-
+:deep(){
             .newsTopList {
-                padding-left: 0;
-                padding-right: 0;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
             }
 
             .industryNewsBox {
@@ -96,7 +96,7 @@ onMounted(() => {
             padding-bottom: 12px;
         }
 
-
+    }
 
 
         
