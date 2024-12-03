@@ -1,0 +1,1 @@
+import{useSSRContext as e}from"vue";import{_ as o}from"./_plugin-vue_export-helper-1tPrXgE0.mjs";const t={};const s=t.setup;t.setup=(o,t)=>{const r=e();return(r.modules||(r.modules=new Set)).add("pages/douyin.vue"),s?s(o,t):void 0};const r=o(t,[["ssrRender",function(e,o,t,s){}]]);export{r as default};
