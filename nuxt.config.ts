@@ -5,7 +5,13 @@ export default defineNuxtConfig({
     server: false,
     client: false
   },
-  devtools: { enabled: true },
+  // build: {
+  //   analyze: {
+  //     analyzerMode: 'static'
+  //   }
+  // },
+  // buildDir: 'dist',
+  devtools: { enabled: false },
   css: ['~/assets/magic.min.css', '~/assets/main.scss'],
   app: {
     head: {

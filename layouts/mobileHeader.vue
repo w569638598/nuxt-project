@@ -7,20 +7,24 @@
             <img v-else @click="isOpenMenu = false" class="mobileMenuIcon" src="~/assets/images/header/menuCloseIcon.svg"
                 alt="">
             <ul class="menuList" v-if="isOpenMenu">
-                <li @click="openPage(nav)" v-for="(nav, i) of navList"
+                <li v-for="(nav, i) of navList"
                     :class="[nav.children ? 'hasChildren' : '', 'navItem', nav.isOpenChildren ? 'openedChildren' : 'closedChildren']">
                     <div class="navItemBox" :class="['navItem', isActiveNav(nav.page) ? 'active' : '']">
+                        <nuxt-link :to="{path:nav.path}" class="flbc">
                         <span class="text">{{ nav.text }}</span>
                         <img class=" arrow" @click="nav.isOpenChildren = !nav.isOpenChildren"
                             v-if="nav.children && !nav.isOpenChildren" src="~/assets/images/header/arrow.svg" alt="">
                         <img class="addIcon" v-else-if="nav.children && nav.isOpenChildren"
                             @click="nav.isOpenChildren = !nav.isOpenChildren" src="~/assets/images/header/addIcon.svg"
                             alt="">
+                        </nuxt-link>
                     </div>
                     <ul v-if="nav.children && nav.isOpenChildren">
-                        <li @click="openPage(cNav)" v-for="(cNav, i) of nav.children">
+                        <li v-for="(cNav, i) of nav.children">
                             <div class="navItemBox" :class="['navItem', isActiveNav(cNav.page) ? 'active' : '']">
+                                <nuxt-link :to="{path:cNav.path}">
                                 <span class="text">{{ cNav.text }}</span>
+                            </nuxt-link>
                             </div>
                         </li>
                     </ul>
@@ -36,7 +40,8 @@ const route = useRoute()
 const activeNav = ref('')
 activeNav.value = route.name
 watch(route, (n) => {
-  activeNav.value = route.name
+    activeNav.value = route.name;
+    isOpenMenu.value = false
 })
 
 const isActiveNav = computed(() => {
@@ -54,7 +59,7 @@ const navList = ref([
     {
         text: '首页',
         path: '/',
-        page: 'home'
+        page: 'index'
     },
 
     {
@@ -168,9 +173,6 @@ div.active {
 
             .navItem {
                 .navItemBox {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
                     padding: 0 16px;
                 }
             }

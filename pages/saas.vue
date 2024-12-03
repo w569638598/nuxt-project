@@ -129,6 +129,31 @@ import { onMounted } from 'vue';
     })
     
 onMounted(() => {
+    // 动画
+inScreenAnimation('.advantageBox .warpTitleBox .title', e => {
+    e.classList.add('animate__slideInUp', 'animate__animated')
+})
+
+inScreenAnimation('.advantageBox .list', e => {
+    e.classList.add('animate__slideInUp', 'animate__animated')
+})
+
+
+inScreenAnimation('.partnerBox .warpTitleBox .title', e => {
+    e.classList.add('animate__slideInUp', 'animate__animated')
+})
+
+inScreenAnimation('.partnerBox .list', e => {
+    e.classList.add('animate__slideInUp', 'animate__animated')
+})
+
+inScreenAnimation('.showPage .warpTitleBox .title', e => {
+    e.classList.add('animate__slideInUp', 'animate__animated')
+})
+
+inScreenAnimation('#stepBox .warpTitleBox .title', e => {
+    e.classList.add('animate__slideInUp', 'animate__animated')
+})
 // 添加客服浮窗
 addCustomerService()
 })

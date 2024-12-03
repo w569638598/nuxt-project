@@ -52,8 +52,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@import '~/assets/base.scss';
-@import '~/assets/main.scss';
 
 @media(max-width: 1200px) {
   .moreItem {
