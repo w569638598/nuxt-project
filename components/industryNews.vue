@@ -3,7 +3,7 @@
         <p  v-if="props.type !== 'mobile'" class="title">行业动态</p>
         <ul class="newsTopBox industryNewsBox" v-if="newsList.length">
             <li v-for="(item, index) in newsList " :key="index" class="newsTopList">
-                <nuxt-link :to="{path:'newsDetail', query:{id:item.id}}">
+                <nuxt-link :to="{path:`/newsDetail/${item.id}`}">
                     <div class="pictureBox">
                         <img class="picture" :src="item.image" alt="" />
                     </div>

@@ -3,7 +3,7 @@
         <div v-if="list.length">
             <ul class="listBox">
                 <li v-for="item in list">
-                    <nuxt-link :to="{path:'newsDetail', query:{id:item.id}}">
+                    <nuxt-link :to="{path:`/newsDetail/${item.id}`}">
                     <div class="listBox-item-info">
                         <h3>
                             {{ item.title }}

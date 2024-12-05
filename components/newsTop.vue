@@ -3,7 +3,7 @@
         <p class="title" v-if="props.type !== 'mobile'">{{ props.title }}</p>
         <ul class="newsTopBox" v-if="newsList.length">
             <li v-for="(item, index) in newsList " :key="index" class="newsTopList">
-                <nuxt-link :to="{path:'newsDetail', query:{id:item.id}}">
+                <nuxt-link :to="{path:`/newsDetail/${item.id}`}">
                     <span class="index"
                         :class="[index == 0 ? 'first' : index == 1 ? 'second' : index == 2 ? 'third' : '']">{{ index + 1
                         }}</span>
